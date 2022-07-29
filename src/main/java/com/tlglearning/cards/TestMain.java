@@ -25,7 +25,7 @@ public class TestMain {
     deck.sort();
     System.out.println(deck);
 
-    deck.sort((card1, card2) -> {
+    deck.sort((Card card1, Card card2) -> {
       int comparison = card1.getRank().compareTo(card2.getRank());
 
       if (comparison == 0){
