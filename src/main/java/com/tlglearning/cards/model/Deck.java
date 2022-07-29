@@ -35,7 +35,7 @@ public class Deck implements Iterable<Card> {
   public void shuffle(Random rng){
     Collections.shuffle(cards,rng);
   }
-  
+
 
   public void sort(){
     sort(null);
