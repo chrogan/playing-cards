@@ -7,6 +7,9 @@ import java.util.Objects;
 public final class Card implements Comparable<Card> {
 
 
+  private static final Comparator<Card> NATURAL_ORDER_COMPARATOR = Comparator
+      .comparing(Card::getSuit)
+      .thenComparing(Card::getRank);
   private final Rank rank;
   private final Suit suit;
   private final String representation;
@@ -18,7 +21,7 @@ public final class Card implements Comparable<Card> {
     this.rank = rank;
     this.suit = suit;
     representation = rank.getSymbol() + suit.getSymbol();
-    hash = Objects.hash(rank,suit);
+    hash = Objects.hash(rank, suit);
 
   }
 
@@ -33,7 +36,7 @@ public final class Card implements Comparable<Card> {
   }
 
 
-//Overrides
+  //Overrides
   @Override
   public int hashCode() {
     return super.hashCode();
@@ -42,12 +45,12 @@ public final class Card implements Comparable<Card> {
   @Override
   public boolean equals(Object obj) {
     boolean result;
-    if(this==obj){
-      result =true;
-    }else if(obj instanceof Card){
+    if (this == obj) {
+      result = true;
+    } else if (obj instanceof Card) {
       Card other = (Card) obj;
       result = (rank == other.rank && suit == other.suit);
-    }else{
+    } else {
       result = false;
     }
 
@@ -61,9 +64,7 @@ public final class Card implements Comparable<Card> {
 
   @Override
   public int compareTo(Card other) {
-    return Comparator
-        .comparing(Card::getSuit)
-        .thenComparing(Card::getRank)
+    return NATURAL_ORDER_COMPARATOR
         .compare(this, other);
   }
 }
