@@ -22,19 +22,14 @@ public class TestMain {
 //    }
 
 
-    deck.sort();
+    deck.sort(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            );
     System.out.println(deck);
 
-    deck.sort((Card card1, Card card2) -> {
-      int comparison = card1.getRank().compareTo(card2.getRank());
+    deck.sort(
+        Comparator
+        .comparing(Card::getRank)
+        .thenComparing(Card::getSuit));
 
-      if (comparison == 0){
-        comparison = card1.getSuit().compareTo(card2.getSuit());
-      }
-
-      return comparison;
-    }
-    );
     System.out.println(deck);
   }
 
